@@ -11,19 +11,20 @@ import PageNotFound from "./pages/pageNotFound/PageNotFound";
 import SearchResult from "./pages/searchResult/SearchResult";
 
 function App() {
-  useEffect(() => {
-    testApi("/movie/latest");
-  }, []);
+  // useEffect(() => {
+  //   testApi("/movie/latest");
+  // }, []);
 
-  const testApi = (url) => {
-    fetchDataFromApi(url).then((res) => console.log(res.original_title));
-  };
+  // const testApi = (url) => {
+  //   fetchDataFromApi(url).then((res) => console.log(res.original_title));
+  // };
 
   return (
     <BrowserRouter>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/search/:query" element={<SearchResult />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
       <Footer />
