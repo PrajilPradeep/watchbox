@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.scss";
 import { fetchDataFromApi } from "./utils/apiUtils";
 import Header from "./components/header/Header";
@@ -18,7 +19,16 @@ function App() {
     fetchDataFromApi(url).then((res) => console.log(res.original_title));
   };
 
-  return <>MovieBox</>;
+  return (
+    <BrowserRouter>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter>
+  );
 }
 
 export default App;
